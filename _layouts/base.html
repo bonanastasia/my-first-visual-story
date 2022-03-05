@@ -2,76 +2,32 @@
 <html lang="{% block lang %}en{% endblock lang %}">
 <head>
   <meta charset="utf-8">
-  <title>{% block title %}{% endblock title %}</title>
-  <meta name="description" content="{% block description %}{{ meta.seo_description }}{% endblock description %}">
-
-  {% block viewport %}
+  <title>First Visual Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% endblock viewport %}
-
-  {% block canonical_url %}<link rel="canonical" href="{{ page.absoluteUrl }}">{% endblock canonical_url %}
-
-  {% block meta %}
-  {% endblock meta %}
-
-  {% block opengraph %}
-  <meta property="og:title" content="{{ meta.social_headline }}">
-  <meta property="og:description" content="{{ meta.social_description }}">
-  <meta property="og:url" content="{{ page.absoluteUrl }}">
-  <meta property="og:image" content="{% staticabsolute meta.social_image %}">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="{{ meta.site_name }}">
-  <meta property="og:locale" content="{{ meta.locale }}">
-  {% endblock opengraph %}
-
-  {% block twitter %}
-  <meta property="twitter:title" content="{{ meta.social_headline }}">
-  <meta property="twitter:description" content="{{ meta.social_description }}">
-  <meta property="twitter:url" content="{{ page.absoluteUrl }}">
-  <meta property="twitter:image" content="{% staticabsolute meta.social_image %}">
-  <meta property="twitter:card" content="summary_large_image">
-  {% endblock twitter %}
-
-  {% block ldjson %}
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "NewsArticle",
-    "headline": "{{ meta.seo_headline }}",
-    "image": {
-      "@type": "ImageObject",
-      "contentUrl": "{% staticabsolute meta.social_image %}",
-      "url": "{% staticabsolute meta.social_image %}",
-      "representativeOfPage": true
-    },
-    "dateCreated": "{{ meta.pub_date|date("yyyy-MM-dd HH:mm:ss") }}",
-    "datePublished": "{{ meta.pub_date|date("yyyy-MM-dd HH:mm:ss") }}",
-    {% if meta.update_date %}
-    "dateModified": "{{ meta.update_date|date("yyyy-MM-dd HH:mm:ss") }}",
-    {% endif -%}
-    "mainEntityOfPage": "{{ page.absoluteUrl }}",
-    "description": "{{ meta.seo_description }}",
-    "publisher": {
-      "@type": "Organization",
-      "name": "{{ meta.site_name }}",
-      "url": "{{ DOMAIN }}",
-    },
-    "author": [{% for author in meta.byline %}{
-      {% if author.name %}"name": "{{ author.name }}",{% endif %}
-      {% if author.url %}"url": "{{ author.url }}",{% endif %}
-      "@type": "Person"
-    }{% if not loop.last %},{% endif %}{% endfor %}]
-  }
-  </script>
-  {% endblock ldjson %}
-
   {% block styles %}
   {% endblock styles %}
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://palewi.re/docs/first-visual-story/_static/css/tutorial.css">
   {% block scripts %}
   {% endblock scripts %}
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+    integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
+    async></script>
 </head>
 <body>
+    <nav>
+        <img src="https://bl.ocks.org/palewire/raw/1035cd306a2f85b362b1a20ce315b8eb/ire-logo.png">
+    </nav>
+  <header>
+    <h1>{% block headline %}{% endblock %}</h1>
+    <div class="byline">
+        {% block byline %}{% endblock %}
+    </div>
+    <div class="pubdate">
+        {% block pubdate %}{% endblock %}
+    </div>
+  </header>
   {% block content %}
   {% endblock content %}
 </body>
