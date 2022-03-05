@@ -17,7 +17,17 @@ map.setView([33.98342046314282, -118.30681395997071], 18);
 homicides.forEach((obj) => {
   L.circleMarker([obj.latitude, obj.longitude])
     .addTo(map) // Add markers at homicide locations
-    .bindTooltip(obj.first_name + ' ' + obj.last_name, { permanent: true }); // Add tooltip with victims name
+    .bindTooltip(
+      obj.first_name +
+        ' ' +
+        obj.last_name +
+        '<br>' +
+        obj.age +
+        '-year-old, ' +
+        obj.race +
+        ' ' +
+        obj.gender
+    ); // Add tooltip with victims name
 });
 
 const satelliteLayer2 = L.tileLayer(

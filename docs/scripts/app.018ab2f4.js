@@ -8506,7 +8506,17 @@ i.exports
     i.exports
       .circleMarker([t.latitude, t.longitude])
       .addTo(l)
-      .bindTooltip(t.first_name + ' ' + t.last_name, { permanent: !0 });
+      .bindTooltip(
+        t.first_name +
+          ' ' +
+          t.last_name +
+          '<br>' +
+          t.age +
+          '-year-old, ' +
+          t.race +
+          ' ' +
+          t.gender
+      );
   });
 new h(
   i.exports.tileLayer(
@@ -8517,4 +8527,4 @@ new h(
   console.log('Leaflet', s),
   console.log(a),
   console.log('Hello bakers');
-//# sourceMappingURL=app.1426020c.js.map
+//# sourceMappingURL=app.018ab2f4.js.map

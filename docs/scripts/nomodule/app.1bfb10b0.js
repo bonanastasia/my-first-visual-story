@@ -9283,7 +9283,17 @@
       xn.exports
         .circleMarker([t.latitude, t.longitude])
         .addTo(Zn)
-        .bindTooltip(t.first_name + ' ' + t.last_name, { permanent: !0 });
+        .bindTooltip(
+          t.first_name +
+            ' ' +
+            t.last_name +
+            '<br>' +
+            t.age +
+            '-year-old, ' +
+            t.race +
+            ' ' +
+            t.gender
+        );
     }),
     new zn(
       xn.exports.tileLayer(
@@ -9295,4 +9305,4 @@
     console.log(Pn),
     console.log('Hello bakers');
 })();
-//# sourceMappingURL=app.a742079a.js.map
+//# sourceMappingURL=app.1bfb10b0.js.map
