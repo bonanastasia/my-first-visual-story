@@ -14,5 +14,8 @@
 {% endblock scripts -%}
 
 {% block content %}
-<p>Hello World</p>
+{% for obj in harvard_park_homicides %}
+  {{obj.last_name}} {{obj.first_name}} <br>
+{% endfor %}
+{{ harvard_park_homicides }}
 {% endblock %}
